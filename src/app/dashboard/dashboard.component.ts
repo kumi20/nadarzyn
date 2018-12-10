@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, Input, ViewChild, Output, EventEmitter, 
 import { EventService } from '../event.service';
 import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,24 +14,30 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy{
   @ViewChildren('dynamiCom') dynamiCom;  
   id: number = 1;
   private sub: any;
-    
+  cform;
+  home = {
+        home: 'HOME',
+        premises: 'OBIEKT',
+        visualization: 'WSTĘPNA WIZUALIZACJA',
+        state: 'STAN OBECNY',
+        location: 'LOKALIZACJA',
+        contact: 'KONTAKT',
+        powierzchnia: '100 800 m'+'2'.sup()
+    };  
     
   constructor(private CmsService: ApiService, private event: EventService, private route: ActivatedRoute, private _route: Router) { }
     
   ngOnInit() {
-      this.sub = this.route.params.subscribe(params => {
-        this.id = +params['id'];
-            if (isNaN(this.id)) this.id = 1;
-            if(this.dynamiCom != null){
-                this.ngAfterViewInit();
-            }
-      });
+      this.event.rozeslij_menu(this.home);
       
-      this.CmsService.get(`mbopn/getOfers.php`).subscribe(
-        response=>{
-            console.log('respone', response['length'])
-        }
-      )
+      
+      this.cform = new FormGroup({
+            name: new FormControl(""),
+            email: new FormControl("", Validators.required),
+            phone: new FormControl(""),
+            message: new FormControl("", Validators.required)
+      })
+
   }
     
   ngAfterViewInit(){
@@ -40,11 +47,28 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy{
   }
     
  ngOnDestroy(){
-     this.sub.unsubscribe();
+
  }    
     
-    test(){
-        this.event.wyswietlInfo('success', 'test error');
-    }   
+    send(event){
+        if (event.email == '' || event.message == '') this.event.wyswietlInfo('info','Proszę podać email i treśc wiadomości');
+        else{
+            this.event.klepsydraStart();
+            this.CmsService.send(`http://kumi20.webd.pl/dusseldorf/api/wyslij.php`, event).subscribe(
+                response=>{
+                    this.event.wyswietlInfo('success', 'Wiadomość została wysłana');
+                    this.cform.controls['name'].setValue("");
+                    this.cform.controls['email'].setValue("");
+                    this.cform.controls['message'].setValue("");
+                    this.cform.controls['phone'].setValue("");
+                    this.event.klepsydraStop();
+                },
+                error =>{
+                    this.event.klepsydraStop();
+                    this.event.wyswietlInfo('error','Błąd wysyłania wiadomości');
+                }
+            )
+        }
+    }     
     
 }

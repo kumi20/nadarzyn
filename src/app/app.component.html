@@ -2,4 +2,67 @@
 <div id="klepsydra">
     <mdb-spinner spinnerType="big" spinnerColor="blue"></mdb-spinner>
 </div>
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <p class="title">Kloster Schwalmtal - Hostert</p>
+            </div>
+            <div class="col-md-2">
+                <a routerLink=""><img src="../../assets/pl.gif" class="flags"></a>
+                <a routerLink="/en"><img src="../../assets/en.png" class="flags"></a>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-2"><p innerHTML="{{menu.powierzchnia}}"></p></div>
+            <div class="col-md-10" >
+<!--
+                <nav class="navbar navbar-expand-lg navbar-light" style="position:relative; float: right">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <a class="nav-item nav-link active" href="#" style="">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-item nav-link"obiekt href="#" mdbPageScroll [pageScrollDuration]="1000">Obiekt</a>
+                      <a class="nav-item nav-link" href="#">Wstępna wizualizacja</a>
+                      <a class="nav-item nav-link" href="#">Stan obecny</a>
+                      <a class="nav-item nav-link" href="#">Lokalizacja</a>
+                      <a class="nav-item nav-link" style="border-right:none;" href="#">Kontakt</a>
+                    </div>
+                  </div>
+                </nav>
+-->
+                
+                <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light scrolling-navbar " [containerInside]="false" >
+                <links>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item waves-light" mdbRippleRadius routerLinkActive="active">
+                            <a class="nav-link" href="#top" mdbPageScroll [pageScrollDuration]="1000" >{{menu.home}} <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item waves-light" mdbRippleRadius routerLinkActive="active">
+                            <a class="nav-link" href="#obiekt" mdbPageScroll [pageScrollDuration]="1000">{{menu.premises}}</a>
+                        </li>
+                        <li class="nav-item waves-light" mdbRippleRadius routerLinkActive="active">
+                            <a class="nav-link" href="#wizualizacja" mdbPageScroll [pageScrollDuration]="1000">{{menu.visualization}}</a>
+                        </li>
+                        <li class="nav-item waves-light" mdbRippleRadius routerLinkActive="active">
+                            <a class="nav-link" href="#stan" mdbPageScroll [pageScrollDuration]="1000">{{menu.state}}</a>
+                        </li>
+                        <li class="nav-item waves-light" mdbRippleRadius routerLinkActive="active">
+                            <a class="nav-link" href="#lokalizacja" mdbPageScroll [pageScrollDuration]="1000">{{menu.location}}</a>
+                        </li>
+                        <li class="nav-item waves-light" mdbRippleRadius routerLinkActive="active" >
+                            <a class="nav-link" href="#contact" mdbPageScroll [pageScrollDuration]="1000" style="border-right:none;">{{menu.contact}}</a>
+                        </li>
+                    </ul>
+                </links>
+                </mdb-navbar>
+            </div>
+        </div>
+        
+    </div>
+</header>
 <router-outlet></router-outlet> 

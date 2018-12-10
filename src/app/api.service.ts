@@ -8,7 +8,7 @@ import { EventService } from './event.service';
 export class ApiService {
 
   domanie = 'http://kumi20.webd.pl'; 
-  uri =  this.domanie + '/api/mbopn/';
+  uri =  this.domanie + '/api/';
     
     
   uriGallery = this.domanie + '/cms/assets/gallery';
@@ -41,6 +41,15 @@ export class ApiService {
         })
     )
   }    
+    
+    send(uri, json){
+         return this._http.post<any[]|any>(uri, json)
+      .pipe(
+        catchError((err, caught)=>{
+            this.event.wyswietlInfo('error',err.message);
+            throw new Error(err.message)
+        })
+    )}
 
 
 }

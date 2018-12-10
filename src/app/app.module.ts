@@ -25,6 +25,7 @@ import { DashboardComponent} from './dashboard/dashboard.component';
 import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
 import { WraperComponentComponent } from './wraper-component/wraper-component.component';
 import { TemplateModule } from './template/template.module';
+import { EnComponent } from './en/en.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { TemplateModule } from './template/template.module';
 		AppComponent,
         DashboardComponent,
         DynamicComponentComponent,
-        WraperComponentComponent
+        WraperComponentComponent,
+        EnComponent
 	],
 	imports: [
 		BrowserModule,

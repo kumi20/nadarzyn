@@ -1,1 +1,192 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face
+
+{
+
+	font-family: 'Museo Sans 100';
+	src:url(./assets/fonts/MUSEOSANS.otf);
+
+}
+
+@font-face
+
+{
+
+	font-family: 'Museo Sans 900';
+	src:url(./assets/fonts/MUSEOSANS_2.otf);
+
+}
+
+@font-face
+
+{
+
+	font-family: 'Museo Sans 700';
+	src:url(./assets/fonts/MUSEOSANS_1.otf);
+
+}
+
+
+body{
+    font-family: "Museo Sans 100";
+}
+
+p{
+    font-size: 19px;
+}
+
+
+.title{
+    margin-top:20px;
+    font-size:48px;
+    font-weight: 900;
+    color: #575756;
+    font-family: "Museo Sans 900";
+
+}
+
+a.nav-link{ 
+    height:20px;
+    padding: 0 0 0 0;
+    border-right: solid 1px #575756;
+}
+
+main{
+    width:99%;
+}
+
+.carousel{
+    margin-top:162px;
+    z-index: 1000;
+}
+
+.flags{
+    width:50px;
+    margin-top:30px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+
+.md-form input[type=text], .md-form input[type=password], .md-form input[type=email], .md-form input[type=url], .md-form input[type=time], .md-form input[type=date], .md-form input[type=datetime-local], .md-form input[type=tel], .md-form input[type=number], .md-form input[type=search-md], .md-form input[type=search], .md-form textarea.md-textarea {
+    transition: all 0.3s;
+    outline: none;
+    box-shadow: none;
+    box-shadow: 1px 1px 0 #a49e9d;
+    border-radius: 0;
+    box-sizing: content-box;
+    background-color: transparent;
+}
+
+.btn-send{
+    background-color: #575756;
+    font-weight: bold;
+    padding: 10px 30px 10px 30px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.backDivtext{
+    -ms-transform: rotate(270deg); //Internet Explorer
+    -moz-transform: rotate(270deg); // Firefox
+    -webkit-transform: rotate(270deg); // Chrome
+    transform: rotate(270deg);
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 black;
+    padding: 0px 0px 20px 20px;
+    width:590px;
+    margin-left:-220px;
+}
+
+.navbar{
+    position:relative;
+    z-index: 2000000000;
+}
+
+
+#contact{
+    margin-bottom:100px;
+}
+
+.navbar-light{
+    background: #ffffff;
+}
+
+.email{
+    margin-top:50px;
+    font-family: "Museo Sans 700";
+    font-size: 38px; 
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .title{
+        font-size: 24px;
+    }
+    
+    .backDivtext{
+        font-size: 24px;  
+        margin-left: -280px !important;
+    }
+    
+    .carousel{
+        margin-top:200px;
+    }
+    
+    #navbar{
+        margin-top: -40px;
+    }
+    
+    .contactText{
+        margin-top:-130px !important;
+    }
+} 
+
+@media only screen and (max-width: 700px) and (orientation: landscape) {
+    .landscape{
+        margin-top:-20px !important;
+    }
+    
+    .backDivtext{
+        font-size: 24px;
+    }
+    
+    .contactText{
+        margin-top:-130px !important;
+    }
+
+}
+
+
+
+@media (max-width: 1024px){
+	.backDivtext{
+        margin-left:-250px;   
+    }
+    
+    .email{
+        font-size: 20px; 
+    }
+}
+
+
+.z-depth-1, .jumbotron, .author-box, .btn, .btn.disabled:active, .btn.disabled:focus, .btn.disabled:hover, .btn:disabled:active, .btn:disabled:focus, .btn:disabled:hover, .card, .navbar, .pagination .page-item.active .page-link, .badge, .modal-dialog.cascading-modal .modal-c-tabs .nav-tabs, .modal-dialog.modal-notify .modal-header, .media .media-left img, .counter, .md-pills .show > .nav-link, .md-pills .nav-link.active, .card.card-cascade.wider .card-body, .card-wrapper .front, .card-wrapper .back, .dropdown-content, .mdb-autocomplete-wrap, .side-nav, .side-nav .logo-wrapper.sn-avatar-wrapper img, #toast-container > div, .pricing-card .price .version, mdb-tabset .white .active, mdb-tabset .carousel-thumbnails .carousel-indicators .active .active, .carousel-thumbnails .carousel-indicators mdb-tabset .active .active, mdb-tabset .picker__list-item .active, mdb-tabset .picker__box .picker__header .picker__select--month.browser-default .active, .picker__box .picker__header mdb-tabset .picker__select--month.browser-default .active, mdb-tabset .picker__box .picker__header .picker__select--year.browser-default .active, .picker__box .picker__header mdb-tabset .picker__select--year.browser-default .active, #toast-container > mdb-toast-component, .section-blog-fw .view {
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.6), 0 0px 0px 0 rgba(0, 0, 0, 0.0) !important;
+    margin-top:-10px;
+    float:right;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}

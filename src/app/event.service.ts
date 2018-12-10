@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { ToastService } from './typescripts/pro/alerts'
 import { MDBSpinningPreloader } from './typescripts/pro';
 
@@ -7,6 +7,8 @@ export class EventService {
 
   constructor(private toastrService: ToastService) {}
 
+@Output()
+	onRozeslijMenu: EventEmitter<any> = new EventEmitter<any>();    
 
   wyswietlInfo(typ, tresc){
     switch(typ){
@@ -22,5 +24,9 @@ export class EventService {
 
     klepsydraStop(){
       document.getElementById('klepsydra').style.display = 'none';
+    }
+    
+    rozeslij_menu(menu){
+        this.onRozeslijMenu.emit(menu);
     }
 }
