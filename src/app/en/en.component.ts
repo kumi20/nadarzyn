@@ -4,32 +4,31 @@ import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
-@Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
-})
-export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy{
 
-  @ViewChildren('dynamiCom') dynamiCom;  
-  id: number = 1;
-  private sub: any;
-  cform;
-  home = {
+@Component({
+  selector: 'app-en',
+  templateUrl: './en.component.html',
+  styleUrls: ['./en.component.scss']
+})
+export class EnComponent implements OnInit {
+
+    cform;
+    id;
+    home = {
         home: 'HOME',
-        premises: 'OBIEKT',
-        visualization: 'WSTĘPNA WIZUALIZACJA',
-        state: 'STAN OBECNY',
-        location: 'LOKALIZACJA',
-        contact: 'KONTAKT',
-        powierzchnia: '100 800 m'+'2'.sup()
-    };  
+        premises: 'PREMISES',
+        visualization: 'PRELIMINARY VISUALIZATION',
+        state: 'CURRENT STATE',
+        location: 'LOCATION',
+        contact: 'CONTACT',
+        powierzchnia: '100 800 sqm'
+    };
     
   constructor(private CmsService: ApiService, private event: EventService, private route: ActivatedRoute, private _route: Router) { }
-    
+
   ngOnInit() {
-      this.event.rozeslij_menu(this.home);
       
+      this.event.rozeslij_menu(this.home);
       
       this.cform = new FormGroup({
             name: new FormControl(""),
@@ -37,21 +36,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy{
             phone: new FormControl(""),
             message: new FormControl("", Validators.required)
       })
-
   }
-    
-  ngAfterViewInit(){
-      this.dynamiCom.forEach(el=>{
-          el.pobierzKontrolki(this.id);
-      })
-  }
-    
- ngOnDestroy(){
-
- }    
     
     send(event){
-        if (event.email == '' || event.message == '') this.event.wyswietlInfo('info','Proszę podać email i treśc wiadomości');
+        if (event.email == '' || event.message == '') this.event.wyswietlInfo('info','Please enter your email and message');
         else{
             this.event.klepsydraStart();
             this.CmsService.send(`https://warzywkubek.pl/dusseldorf/api/wyslij.php`, event).subscribe(
@@ -69,6 +57,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy{
                 }
             )
         }
-    }     
-    
+    }  
+
 }
