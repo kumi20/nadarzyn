@@ -17,12 +17,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy{
   cform;
   home = {
         home: 'HOME',
-        premises: 'OBIEKT',
-        visualization: 'WSTĘPNA WIZUALIZACJA',
-        state: 'STAN OBECNY',
-        location: 'LOKALIZACJA',
+        premises: 'LOKALIZACJA',
+        visualization: 'OBIEKT',
+        state: 'PROJEKT INWESTYCJI',
         contact: 'KONTAKT',
-        powierzchnia: '100 800 m'+'2'.sup()
+        powierzchnia: '17 200 m'+'2'.sup()
     };  
     
   constructor(private CmsService: ApiService, private event: EventService, private route: ActivatedRoute, private _route: Router) { }

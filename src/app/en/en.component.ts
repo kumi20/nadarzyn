@@ -16,12 +16,11 @@ export class EnComponent implements OnInit {
     id;
     home = {
         home: 'HOME',
-        premises: 'PREMISES',
-        visualization: 'PRELIMINARY VISUALIZATION',
-        state: 'CURRENT STATE',
-        location: 'LOCATION',
+        premises: 'LOCATION',
+        visualization: 'PREMISES',
+        state: 'INVESTMENT PROJECT',
         contact: 'CONTACT',
-        powierzchnia: '100 800 sqm'
+        powierzchnia: '17 000 sqm'
     };
     
   constructor(private CmsService: ApiService, private event: EventService, private route: ActivatedRoute, private _route: Router) { }
