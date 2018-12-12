@@ -25,6 +25,25 @@
 
 }
 
+.text {
+  fill: url(#gr-radial);
+    font-weight:bold;
+}
+
+.text-danger{
+    font-size:48px;
+    
+    font-weight:bold;
+    text-shadow: 1px 1px 0 black;
+}
+
+.text-top{
+    width:100%;
+    position: absolute;
+    text-align: center;
+    z-index: 10000000000;
+}
+
 
 body{
     font-family: "Museo Sans 100";
